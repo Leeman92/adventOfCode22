@@ -1,0 +1,16 @@
+{
+  "name": "patricklehmann/aoc_22",
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "symfony/var-dumper": "*"
+  }
+}
