@@ -8,7 +8,7 @@ use App\Solver\SolverInterface;
 
 class PuzzleSolver
 {
-    protected const SOLVER_CLASS_NAMESPACE = 'App\Solver\Day_%s\\Solver';
+    protected const SOLVER_CLASS_NAMESPACE = 'App\Solver\Day_%s\Solver';
 
     /**
      * Automatically instantiates the Solver for the passed Day
