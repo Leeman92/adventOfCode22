@@ -6,6 +6,9 @@ namespace App\Solver\Day_03;
 use App\Solver\AbstractSolver;
 use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @inheritDoc
+ */
 class Solver extends AbstractSolver
 {
     /**

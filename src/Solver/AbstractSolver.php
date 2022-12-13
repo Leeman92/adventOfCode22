@@ -5,6 +5,10 @@ namespace App\Solver;
 use App\Exception\InputNotFoundException;
 use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * Class that contains the solution for the specific day
+ * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
+ */
 abstract class AbstractSolver implements SolverInterface
 {
     protected const INPUT_PATH = __DIR__ . '/../resources/input/';

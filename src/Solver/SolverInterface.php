@@ -37,6 +37,19 @@ interface SolverInterface
      */
     #[NoReturn] public function printSolution(string $day, int $part, string $solutionValue): void;
 
+    /**
+     * Solution for part One
+     *
+     * @param array $input
+     * @return void
+     */
     public function partOne(array $input): void;
+
+    /**
+     * Solution for part Two
+     *
+     * @param array $input
+     * @return void
+     */
     public function partTwo(array $input): void;
 }

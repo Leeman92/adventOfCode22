@@ -7,6 +7,9 @@ use App\Solver\AbstractSolver;
 use App\Solver\Utilities\RockPaperScissorsMatcher;
 use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @inheritDoc
+ */
 class Solver extends AbstractSolver
 {
     /**

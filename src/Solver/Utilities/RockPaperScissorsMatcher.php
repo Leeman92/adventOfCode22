@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Solver\Utilities;
 
@@ -8,6 +9,11 @@ use App\Solver\Utilities\Matcher\Rock;
 use App\Solver\Utilities\Matcher\Scissors;
 use LogicException;
 
+/**
+ * Class to solve the Rock Paper Scissor Game depending on the rules given by the puzzle
+ *
+ * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
+ */
 class RockPaperScissorsMatcher
 {
     public function evaluate(string $round, bool $secondPart = false): int

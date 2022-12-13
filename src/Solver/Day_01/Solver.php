@@ -7,6 +7,9 @@ use App\Exception\InputNotFoundException;
 use App\Solver\AbstractSolver;
 use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @inheritDoc
+ */
 class Solver extends AbstractSolver
 {
 
