@@ -11,6 +11,7 @@
     }
   },
   "require": {
-    "symfony/var-dumper": "*"
+    "symfony/var-dumper": "*",
+    "ext-ctype": "*"
   }
 }
