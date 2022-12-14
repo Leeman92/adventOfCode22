@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Solver\Utilities\Matcher;
+namespace App\Utilities\Matcher;
 
 use LogicException;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Solver\Day_02;
 
 use App\Solver\AbstractSolver;
-use App\Solver\Utilities\RockPaperScissorsMatcher;
+use App\Utilities\RockPaperScissorsMatcher;
 use JetBrains\PhpStorm\NoReturn;
 
 /**

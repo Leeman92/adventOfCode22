@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Solver\Utilities;
+namespace App\Utilities;
 
-use App\Solver\Utilities\Matcher\AbstractMatcher;
-use App\Solver\Utilities\Matcher\Paper;
-use App\Solver\Utilities\Matcher\Rock;
-use App\Solver\Utilities\Matcher\Scissors;
+use App\Utilities\Matcher\AbstractMatcher;
+use App\Utilities\Matcher\Paper;
+use App\Utilities\Matcher\Rock;
+use App\Utilities\Matcher\Scissors;
 use LogicException;
 
 /**
