@@ -15,7 +15,6 @@ class Solver extends AbstractSolver
 
     /**
      * @inheritDoc
-     * @throws InputNotFoundException
      */
     #[NoReturn] public function solve(): void
     {
@@ -34,39 +33,37 @@ class Solver extends AbstractSolver
     }
 
     /**
-     * Calculate how many each elf is carrying.
-     * Split elves by empty lines in the puzzle input
-     *
-     * @param array $input
-     * @return array
+     * @param array<string> $input
+     * @return array<string>
      */
     protected function calculateElvesRations(array $input): array
     {
         $elves = [];
         $calories = 0;
-        $elfIndex = 0;
         foreach ($input as $carriedCalories) {
             if ($carriedCalories === "") {
-                $elves[$elfIndex] = $calories;
+                $elves[] = $calories;
                 $calories = 0;
-                $elfIndex++;
                 continue;
             }
-            $calories += $carriedCalories;
+            $calories += (int) $carriedCalories;
         }
+
 
         uasort($elves, function ($a, $b) {
             return $b <=> $a;
         });
 
-        return $elves;
+        $transformedElves = [];
+        foreach ($elves as $carriedCalories) {
+            $transformedElves[] = (string) $carriedCalories;
+        }
+
+        return $transformedElves;
     }
 
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partOne(array $input): void
     {
@@ -74,10 +71,7 @@ class Solver extends AbstractSolver
     }
 
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partTwo(array $input): void
     {

@@ -13,10 +13,7 @@ use JetBrains\PhpStorm\NoReturn;
 class Solver extends AbstractSolver
 {
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partOne(array $input): void
     {
@@ -31,10 +28,7 @@ class Solver extends AbstractSolver
     }
 
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partTwo(array $input): void
     {

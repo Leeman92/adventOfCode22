@@ -20,7 +20,7 @@ interface SolverInterface
     /**
      * Loads the puzzle Input and puts every line in a separate array value
      *
-     * @return array
+     * @return array<string>
      *
      * @throws InputNotFoundException
      */
@@ -40,7 +40,7 @@ interface SolverInterface
     /**
      * Solution for part One
      *
-     * @param array $input
+     * @param array<string> $input
      * @return void
      */
     public function partOne(array $input): void;
@@ -48,7 +48,7 @@ interface SolverInterface
     /**
      * Solution for part Two
      *
-     * @param array $input
+     * @param array<string> $input
      * @return void
      */
     public function partTwo(array $input): void;

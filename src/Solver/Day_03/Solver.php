@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Solver\Day_03;
 
 use App\Solver\AbstractSolver;
+use http\Exception\RuntimeException;
 use JetBrains\PhpStorm\NoReturn;
+use LogicException;
 
 /**
  * @inheritDoc
@@ -12,10 +14,7 @@ use JetBrains\PhpStorm\NoReturn;
 class Solver extends AbstractSolver
 {
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partOne(array $input): void
     {
@@ -23,6 +22,9 @@ class Solver extends AbstractSolver
 
         foreach ($input as $rucksack) {
             $duplicateItem = $this->extractDuplicateItem($rucksack);
+            if (!$duplicateItem) {
+                continue;
+            }
             $totalScore += $this->calculateScore($duplicateItem);
         }
 
@@ -30,10 +32,7 @@ class Solver extends AbstractSolver
     }
 
     /**
-     * Solution for Part One. Return the elf with the most food
-     *
-     * @param array $input
-     * @return void
+     * @inheritDoc
      */
     #[NoReturn] public function partTwo(array $input): void
     {
@@ -44,17 +43,35 @@ class Solver extends AbstractSolver
 
     /**
      * @param string $rucksack
-     * @return string
+     * @return string|false
      */
-    protected function extractDuplicateItem(string $rucksack): string
+    protected function extractDuplicateItem(string $rucksack): string|false
     {
-        $compartments = str_split($rucksack, strlen($rucksack) / 2);
+        $strLength = strlen($rucksack);
+        $compartmentLength = (int) ($strLength/2);
+        if ($compartmentLength <= 0) {
+            throw new LogicException("The length of a compartment needs to be greater than 1");
+        }
+
+        /** @var array<string> $compartments */
+        $compartments = str_split($rucksack, $compartmentLength);
+        if (!$compartments ||
+            count($compartments) !== 2) {
+            throw new RuntimeException("The input was not formed as expected");
+        }
+        $compartments[0] = (string) reset($compartments);
+        $compartments[1] = (string) end($compartments);
+
         $compartments[0] = mb_str_split($compartments[0]);
         $compartments[1] = mb_str_split($compartments[1]);
         $duplicateContent = array_intersect($compartments[0], $compartments[1]);
         return reset($duplicateContent);
     }
 
+    /**
+     * @param array<string> $input
+     * @return int
+     */
     protected function calculateGroupScore(array $input): int
     {
         $score = 0;
@@ -64,7 +81,11 @@ class Solver extends AbstractSolver
             $elfRucksacks[] = mb_str_split($rucksack);
             if (count($elfRucksacks) === 3) {
                 $duplicateItem = array_intersect(...$elfRucksacks);
-                $score += $this->calculateScore(reset($duplicateItem));
+                $item = reset($duplicateItem);
+                if (!$item) {
+                    continue;
+                }
+                $score += $this->calculateScore($item);
                 $elfRucksacks = [];
             }
         }

@@ -34,8 +34,10 @@ class RockPaperScissorsMatcher
         if ($secondPart) {
             $className = $this->getMatcherPartTwo($input, $enemyMove);
         }
+        /** @var AbstractMatcher $abstractMatcher */
+        $abstractMatcher = new $className();
 
-        return new $className();
+        return $abstractMatcher;
     }
 
     protected function getMatcherPartOne(string $input): string

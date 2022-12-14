@@ -54,6 +54,10 @@ abstract class AbstractSolver implements SolverInterface
         }
 
         $input = file_get_contents($pathToFile);
+        if (!$input) {
+            throw new \LogicException(sprintf('Input file for day %s was empty!', $this->day));
+        }
+
         return explode("\r\n", $input);
     }
 
