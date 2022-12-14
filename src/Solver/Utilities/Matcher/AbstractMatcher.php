@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Solver\Utilities\Matcher;
@@ -12,7 +13,6 @@ use LogicException;
  */
 class AbstractMatcher implements MatcherInterface
 {
-
     /**
      * Counter to the given Move
      * @var string

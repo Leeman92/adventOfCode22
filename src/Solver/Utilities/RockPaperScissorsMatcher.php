@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Solver\Utilities;
@@ -58,7 +59,6 @@ class RockPaperScissorsMatcher
             'C' => $this->evaluatePartTwoClassName($input, new Scissors()),
             default => '',
         };
-
     }
 
     protected function evaluatePartTwoClassName(string $input, AbstractMatcher $matcher): string

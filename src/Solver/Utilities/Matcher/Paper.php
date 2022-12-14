@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Solver\Utilities\Matcher;
@@ -21,5 +22,5 @@ class Paper extends AbstractMatcher
     /**
      * @inheritDoc
      */
-   protected int $score = 2;
+    protected int $score = 2;
 }

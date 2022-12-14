@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Solver;
@@ -8,7 +9,6 @@ use JetBrains\PhpStorm\NoReturn;
 
 interface SolverInterface
 {
-
     /**
      * Solves the Puzzle for the given day
      *

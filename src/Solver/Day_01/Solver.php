@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Solver\Day_01;
@@ -12,7 +13,6 @@ use JetBrains\PhpStorm\NoReturn;
  */
 class Solver extends AbstractSolver
 {
-
     /**
      * @inheritDoc
      */
