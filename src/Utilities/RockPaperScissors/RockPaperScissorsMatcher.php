@@ -2,12 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Utilities;
+namespace App\Utilities\RockPaperScissors;
 
-use App\Utilities\Matcher\AbstractMatcher;
-use App\Utilities\Matcher\Paper;
-use App\Utilities\Matcher\Rock;
-use App\Utilities\Matcher\Scissors;
 use LogicException;
 
 /**
