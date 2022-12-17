@@ -21,7 +21,7 @@ class Solver extends AbstractSolver
         $sectionManager = new SectionManager($input);
         $overlapCount = $sectionManager->getCompleteOverlapCount();
 
-        $this->printSolution($this->day, 1, (string) $overlapCount);
+        $this->printSolution(1, (string) $overlapCount);
     }
 
     /**
@@ -32,6 +32,6 @@ class Solver extends AbstractSolver
         $sectionManager = new SectionManager($input);
         $overlapCount = $sectionManager->getSingleOverlapCount();
 
-        $this->printSolution($this->day, 2, (string) $overlapCount);
+        $this->printSolution(2, (string) $overlapCount);
     }
 }

@@ -20,7 +20,7 @@ class Solver extends AbstractSolver
         $instructions = $crane->initiateCrateStacks($input);
         $crane->parseInstructions($instructions, true);
 
-        $this->printSolution($this->day, 1, $crane->getSolution());
+        $this->printSolution(1, $crane->getSolution());
     }
 
 
@@ -33,6 +33,6 @@ class Solver extends AbstractSolver
         $instructions = $crane->initiateCrateStacks($input);
         $crane->parseInstructions($instructions, false);
 
-        $this->printSolution($this->day, 1, $crane->getSolution());
+        $this->printSolution(1, $crane->getSolution());
     }
 }

@@ -16,10 +16,8 @@ class Solver extends AbstractSolver
     /**
      * @inheritDoc
      */
-    #[NoReturn] public function solve(): void
+    #[NoReturn] public function partOne(array $input): void
     {
-        $input = $this->loadPuzzleInputAsArray();
-
         // Check if the last entry is a linebreak if not, add it so it's easier to calculate it as a separate elf
         $lastEntry = end($input);
         if ($lastEntry !== '') {
@@ -28,8 +26,7 @@ class Solver extends AbstractSolver
 
         $elvesRationing = $this->calculateElvesRations($input);
 
-        $this->partOne($elvesRationing);
-        $this->partTwo($elvesRationing);
+        $this->printSolution(1, (string) reset($elvesRationing));
     }
 
     /**
@@ -65,21 +62,21 @@ class Solver extends AbstractSolver
     /**
      * @inheritDoc
      */
-    #[NoReturn] public function partOne(array $input): void
-    {
-        $this->printSolution($this->day, 1, (string) reset($input));
-    }
-
-    /**
-     * @inheritDoc
-     */
     #[NoReturn] public function partTwo(array $input): void
     {
-        $totalRations = 0;
-        $totalRations += (int)array_shift($input);
-        $totalRations += (int)array_shift($input);
-        $totalRations += (int)array_shift($input);
+        // Check if the last entry is a linebreak if not, add it so it's easier to calculate it as a separate elf
+        $lastEntry = end($input);
+        if ($lastEntry !== '') {
+            $input[] = '';
+        }
 
-        $this->printSolution($this->day, 2, (string) $totalRations);
+        $elvesRationing = $this->calculateElvesRations($input);
+
+        $totalRations = 0;
+        $totalRations += (int)array_shift($elvesRationing);
+        $totalRations += (int)array_shift($elvesRationing);
+        $totalRations += (int)array_shift($elvesRationing);
+
+        $this->printSolution(2, (string) $totalRations);
     }
 }

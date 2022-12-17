@@ -13,7 +13,7 @@ abstract class AbstractSolver implements SolverInterface
 {
     protected const INPUT_PATH = __DIR__ . '/../resources/input/';
     protected const PUZZLE_FILE_NAME = 'input.txt';
-    protected const PUZZLE_FILE_TEST_NAME = 'test.input.txt';
+    protected const PUZZLE_FILE_TEST_NAME = 'test%s.input.txt';
 
     /**
      * Sets the day and testmode when instantiating
@@ -21,16 +21,21 @@ abstract class AbstractSolver implements SolverInterface
      * @param string $day
      * @param bool $testMode
      */
-    public function __construct(protected string $day, protected bool $testMode)
-    {
+    public function __construct(
+        protected string $day,
+        protected bool $testMode
+    ) {
     }
 
     /**
      * @inheritDoc
      */
-    #[NoReturn] public function solve(): void
+    #[NoReturn] public function solve(int $testId = 1): void
     {
-        $input = $this->loadPuzzleInputAsArray();
+        $input = $this->loadPuzzleInputAsArray($testId);
+        if ($this->testMode) {
+            var_dump("Running Test ". $testId);
+        }
 
         $this->partOne($input);
 
@@ -40,11 +45,11 @@ abstract class AbstractSolver implements SolverInterface
     /**
      * @inheritDoc
      */
-    public function loadPuzzleInputAsArray(): array
+    public function loadPuzzleInputAsArray(int $testId): array
     {
         $fileName = self::PUZZLE_FILE_NAME;
         if ($this->testMode) {
-            $fileName = self::PUZZLE_FILE_TEST_NAME;
+            $fileName = sprintf(self::PUZZLE_FILE_TEST_NAME, $testId > 1 ? (string) $testId : '');
         }
 
         $pathToFile= self::INPUT_PATH . $this->day . '/'. $fileName;
@@ -61,10 +66,10 @@ abstract class AbstractSolver implements SolverInterface
         return explode("\r\n", $input);
     }
 
-    #[NoReturn] public function printSolution(string $day, int $part, string $solutionValue): void
+    #[NoReturn] public function printSolution(int $part, string $solutionValue): void
     {
         $solutionText = "The solution for day %s part %s is: %s" . PHP_EOL;
-        $solutionText = sprintf($solutionText, $day, $part, $solutionValue);
+        $solutionText = sprintf($solutionText, $this->day, $part, $solutionValue);
         $spacerText = str_pad("", strlen($solutionText), "=");
         echo $spacerText. PHP_EOL;
         echo $solutionText;

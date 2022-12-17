@@ -25,7 +25,7 @@ class Solver extends AbstractSolver
             $totalScore += $rpsMatcher->evaluate($round);
         }
 
-        $this->printSolution($this->day, 1, (string)$totalScore);
+        $this->printSolution(1, (string)$totalScore);
     }
 
     /**
@@ -40,6 +40,6 @@ class Solver extends AbstractSolver
             $totalScore += $rpsMatcher->evaluate($round, true);
         }
 
-        $this->printSolution($this->day, 2, (string)$totalScore);
+        $this->printSolution(2, (string)$totalScore);
     }
 }

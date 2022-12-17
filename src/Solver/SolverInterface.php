@@ -13,30 +13,31 @@ interface SolverInterface
     /**
      * Solves the Puzzle for the given day
      *
+     * @param int $testCount
      * @return void
      * @throws InputNotFoundException
      */
-    public function solve(): void;
+    public function solve(int $testCount): void;
 
     /**
      * Loads the puzzle Input and puts every line in a separate array value
      *
+     * @param int $testId
      * @return array<string>
      *
      * @throws InputNotFoundException
      */
-    public function loadPuzzleInputAsArray(): array;
+    public function loadPuzzleInputAsArray(int $testId): array;
 
     /**
      * Prints the solution to the cli
      *
-     * @param string $day
      * @param int $part
      * @param string $solutionValue
      *
      * @return void
      */
-    #[NoReturn] public function printSolution(string $day, int $part, string $solutionValue): void;
+    #[NoReturn] public function printSolution(int $part, string $solutionValue): void;
 
     /**
      * Solution for part One

@@ -29,7 +29,7 @@ class Solver extends AbstractSolver
             $totalScore += $this->calculateScore($duplicateItem);
         }
 
-        $this->printSolution($this->day, 1, (string)$totalScore);
+        $this->printSolution(1, (string)$totalScore);
     }
 
     /**
@@ -39,7 +39,7 @@ class Solver extends AbstractSolver
     {
         $totalScore = $this->calculateGroupScore($input);
 
-        $this->printSolution($this->day, 2, (string)$totalScore);
+        $this->printSolution(2, (string)$totalScore);
     }
 
     /**

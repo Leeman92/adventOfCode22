@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Exception\InputNotFoundException;
 use App\Exception\SolverNotImplementedException;
 use App\Solver\SolverInterface;
 
@@ -21,20 +22,24 @@ class PuzzleSolver
      *
      * @param string $day
      * @param bool $testMode
-     *
+     * @param int $testCount
      * @return void
      *
+     * @throws InputNotFoundException
      * @throws SolverNotImplementedException
      */
-    public function run(string $day, bool $testMode): void
+    public function run(string $day, bool $testMode, int $testCount): void
     {
         $className = sprintf(self::SOLVER_CLASS_NAMESPACE, $day);
         if (!class_exists($className)) {
             throw new SolverNotImplementedException($day);
         }
 
-        /** @var SolverInterface $solver */
         $solver = new $className($day, $testMode);
-        $solver->solve();
+
+        for ($i = 1; $i <= $testCount; $i++) {
+            /** @var SolverInterface $solver */
+            $solver->solve($i);
+        }
     }
 }
