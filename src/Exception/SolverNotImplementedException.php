@@ -3,13 +3,13 @@
 namespace App\Exception;
 
 use Exception;
-use Throwable;
 
-class SolverNotImplementedException extends Exception
+class SolverNotImplementedException extends \Exception
 {
-    protected const EXCEPTION_MESSAGE = "Solver for day %s was not implemented yet!";
+    protected const EXCEPTION_MESSAGE = 'Solver for day %s was not implemented yet!';
+
     // Redefine the exception so message isn't optional
-    public function __construct(string $filename, int $code = 0, Throwable $previous = null)
+    public function __construct(string $filename, int $code = 0, \Throwable $previous = null)
     {
         $message = sprintf(self::EXCEPTION_MESSAGE, $filename);
         parent::__construct($message, $code, $previous);

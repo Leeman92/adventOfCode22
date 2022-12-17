@@ -10,7 +10,7 @@ class Solver extends AbstractSolver
     protected HandheldDevice $device;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function partOne(array $input): void
     {
@@ -21,12 +21,12 @@ class Solver extends AbstractSolver
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function partTwo(array $input): void
     {
         $startIndex = $this->device->findStartOfMessage();
         // Since PHP is a zero based index count, add one to the solution
-        $this->printSolution(1, (string)($startIndex + 1));
+        $this->printSolution(1, (string) ($startIndex + 1));
     }
 }

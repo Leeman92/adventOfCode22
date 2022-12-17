@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace App\Solver\Day_02;
 
-use App\Solver\AbstractSolver;
 use App\Services\RockPaperScissorsService\RockPaperScissorsService;
+use App\Solver\AbstractSolver;
 use JetBrains\PhpStorm\NoReturn;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  */
 class Solver extends AbstractSolver
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    #[NoReturn] public function partOne(array $input): void
+    #[NoReturn]
+    public function partOne(array $input): void
     {
         $rpsMatcher = new RockPaperScissorsService();
         $totalScore = 0;
@@ -25,13 +26,14 @@ class Solver extends AbstractSolver
             $totalScore += $rpsMatcher->evaluate($round);
         }
 
-        $this->printSolution(1, (string)$totalScore);
+        $this->printSolution(1, (string) $totalScore);
     }
 
-    /**
-     * @inheritDoc
-     */
-    #[NoReturn] public function partTwo(array $input): void
+       /**
+        * {@inheritDoc}
+        */
+       #[NoReturn]
+    public function partTwo(array $input): void
     {
         $rpsMatcher = new RockPaperScissorsService();
         $totalScore = 0;
@@ -40,6 +42,6 @@ class Solver extends AbstractSolver
             $totalScore += $rpsMatcher->evaluate($round, true);
         }
 
-        $this->printSolution(2, (string)$totalScore);
+        $this->printSolution(2, (string) $totalScore);
     }
 }

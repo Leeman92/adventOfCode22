@@ -4,37 +4,25 @@ declare(strict_types=1);
 
 namespace App\Services\RockPaperScissorsService;
 
-use LogicException;
-
 interface GameMoveInterface
 {
     /**
-     * Evaluates if the Move gets beaten
-     *
-     * @param string $input
-     * @return bool
+     * Evaluates if the Move gets beaten.
      */
     public function isWin(string $input): bool;
 
     /**
-     * Evaluates if the round is a draw
-     *
-     * @param string $input
-     * @return bool
+     * Evaluates if the round is a draw.
      */
     public function isDraw(string $input): bool;
 
     /**
-     * Scores the current round
-     *
-     * @param AbstractGameMove $move
-     * @return int|LogicException
+     * Scores the current round.
      */
-    public function evaluate(AbstractGameMove $move): int|LogicException;
+    public function evaluate(AbstractGameMove $move): int|\LogicException;
 
     /**
-     * Returns the score for the given move
-     * @return int
+     * Returns the score for the given move.
      */
     public function getScore(): int;
 }

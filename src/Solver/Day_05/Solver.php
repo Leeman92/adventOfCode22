@@ -6,15 +6,15 @@ namespace App\Solver\Day_05;
 
 use App\Services\CraneService\Crane;
 use App\Solver\AbstractSolver;
-use Exception;
 use JetBrains\PhpStorm\NoReturn;
 
 class Solver extends AbstractSolver
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    #[NoReturn] public function partOne(array $input): void
+    #[NoReturn]
+    public function partOne(array $input): void
     {
         $crane = new Crane();
         $instructions = $crane->initiateCrateStacks($input);
@@ -23,16 +23,15 @@ class Solver extends AbstractSolver
         $this->printSolution(1, $crane->getSolution());
     }
 
+       /**
+        * {@inheritDoc}
+        */
+       public function partTwo(array $input): void
+       {
+           $crane = new Crane();
+           $instructions = $crane->initiateCrateStacks($input);
+           $crane->parseInstructions($instructions, false);
 
-    /**
-     * @inheritDoc
-     */
-    public function partTwo(array $input): void
-    {
-        $crane = new Crane();
-        $instructions = $crane->initiateCrateStacks($input);
-        $crane->parseInstructions($instructions, false);
-
-        $this->printSolution(1, $crane->getSolution());
-    }
+           $this->printSolution(1, $crane->getSolution());
+       }
 }

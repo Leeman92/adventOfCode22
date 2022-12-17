@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\SectionsService;
 
 /**
- * Manager for the sections to handle all the logic for day 4s puzzle
+ * Manager for the sections to handle all the logic for day 4s puzzle.
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
@@ -29,9 +29,6 @@ class SectionManager
         }
     }
 
-    /**
-     * @return int
-     */
     public function getCompleteOverlapCount(): int
     {
         $overlapCount = 0;
@@ -41,16 +38,13 @@ class SectionManager
 
             if ($this->isOverlapping($firstSection, $secondSection) ||
                 $this->isOverlapping($secondSection, $firstSection)) {
-                $overlapCount++;
+                ++$overlapCount;
             }
         }
 
         return $overlapCount;
     }
 
-    /**
-     * @return int
-     */
     public function getSingleOverlapCount(): int
     {
         $overlapCount = 0;
@@ -59,7 +53,7 @@ class SectionManager
             $secondSection = $this->sections[$i + 1];
 
             if ($this->isPartlyOverlapping($firstSection, $secondSection)) {
-                $overlapCount++;
+                ++$overlapCount;
             }
         }
 
@@ -67,11 +61,7 @@ class SectionManager
     }
 
     /**
-     * Checks if the firstSection is within the bounds of secondSection
-     *
-     * @param Section $firstSection
-     * @param Section $secondSection
-     * @return bool
+     * Checks if the firstSection is within the bounds of secondSection.
      */
     protected function isOverlapping(Section $firstSection, Section $secondSection): bool
     {
@@ -91,11 +81,7 @@ class SectionManager
     }
 
     /**
-     * Checks if the firstSection is within the bounds of secondSection
-     *
-     * @param Section $firstSection
-     * @param Section $secondSection
-     * @return bool
+     * Checks if the firstSection is within the bounds of secondSection.
      */
     protected function isPartlyOverlapping(Section $firstSection, Section $secondSection): bool
     {

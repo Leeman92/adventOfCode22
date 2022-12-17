@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace App\Services\CommunicationSystemService;
 
-use Exception;
-
 class HandheldDevice
 {
     /**
      * @var array<string>
      */
     protected array $subroutineAsArray = [];
+
     public function __construct(protected string|false $subroutine)
     {
         if (!$this->subroutine) {
-            throw new Exception('Could not read subroutine Input');
+            throw new \Exception('Could not read subroutine Input');
         }
         $this->subroutineAsArray = str_split($this->subroutine);
     }
@@ -31,15 +30,12 @@ class HandheldDevice
     }
 
     /**
-     * Checks the subroutine to find the marker with the given markersize
-     *
-     * @param int $markerSize
-     * @return int
+     * Checks the subroutine to find the marker with the given markersize.
      */
     protected function findMarker(int $markerSize): int
     {
         $controlArray = [];
-        for ($i = 0; $i < count($this->subroutineAsArray); $i++) {
+        for ($i = 0; $i < count($this->subroutineAsArray); ++$i) {
             // Add current value to the control
             $controlArray[] = $this->subroutineAsArray[$i];
             // Make sure the value is unique

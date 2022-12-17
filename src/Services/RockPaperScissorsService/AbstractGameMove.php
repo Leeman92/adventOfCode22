@@ -4,65 +4,55 @@ declare(strict_types=1);
 
 namespace App\Services\RockPaperScissorsService;
 
-use LogicException;
-
 /**
- * Abstract Matcher of the possible moves to solve Rock Paper Scissors
+ * Abstract Matcher of the possible moves to solve Rock Paper Scissors.
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
 class AbstractGameMove implements GameMoveInterface
 {
     /**
-     * Counter to the given Move
-     * @var string
+     * Counter to the given Move.
      */
     protected string $counter;
 
     /**
-     * Representation of Move by other elf
-     * @var string
+     * Representation of Move by other elf.
      */
     protected string $representation;
 
     /**
-     * Score you gain when playing that move
-     * @var int
+     * Score you gain when playing that move.
      */
     protected int $score;
 
     /**
-     * What Class this move can win against
-     * @var string
+     * What Class this move can win against.
      */
     public string $winsAgainst;
 
     /**
-     * What Class this move can lose against
-     * @var string
+     * What Class this move can lose against.
      */
     public string $losesAgainst;
 
     /**
-     * Points you gain when losing a round
-     * @var int
+     * Points you gain when losing a round.
      */
     protected int $pointsOnLoss = 0;
 
     /**
-     * Points you gain when drawing a round
-     * @var int
+     * Points you gain when drawing a round.
      */
     protected int $pointsOnDraw = 3;
 
     /**
-     * Points you gain when winning a round
-     * @var int
+     * Points you gain when winning a round.
      */
     protected int $pointsOnWin = 6;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function isWin(string $input): bool
     {
@@ -70,7 +60,7 @@ class AbstractGameMove implements GameMoveInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function isDraw(string $input): bool
     {
@@ -78,7 +68,7 @@ class AbstractGameMove implements GameMoveInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function evaluate(AbstractGameMove $move): int
     {
@@ -94,11 +84,11 @@ class AbstractGameMove implements GameMoveInterface
             return $this->pointsOnDraw;
         }
 
-        throw new LogicException("No condition programmed for this case. How did this happen?!");
+        throw new \LogicException('No condition programmed for this case. How did this happen?!');
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getScore(): int
     {

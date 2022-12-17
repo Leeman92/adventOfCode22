@@ -5,22 +5,22 @@ declare(strict_types=1);
 namespace App\Services\RockPaperScissorsService;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  */
 class Paper extends AbstractGameMove
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public string $winsAgainst = Rock::class;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public string $losesAgainst = Scissors::class;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected int $score = 2;
 }

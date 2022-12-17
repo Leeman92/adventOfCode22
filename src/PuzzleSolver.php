@@ -9,7 +9,7 @@ use App\Exception\SolverNotImplementedException;
 use App\Solver\SolverInterface;
 
 /**
- * Entry class for the Advent Of Code solving to autoload Solvers for the passed day
+ * Entry class for the Advent Of Code solving to autoload Solvers for the passed day.
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
@@ -18,12 +18,7 @@ class PuzzleSolver
     protected const SOLVER_CLASS_NAMESPACE = 'App\Solver\Day_%s\Solver';
 
     /**
-     * Automatically instantiates the Solver for the passed Day
-     *
-     * @param string $day
-     * @param bool $testMode
-     * @param int $testCount
-     * @return void
+     * Automatically instantiates the Solver for the passed Day.
      *
      * @throws InputNotFoundException
      * @throws SolverNotImplementedException
@@ -37,8 +32,8 @@ class PuzzleSolver
 
         $solver = new $className($day, $testMode);
 
-        for ($i = 1; $i <= $testCount; $i++) {
-            /** @var SolverInterface $solver */
+        for ($i = 1; $i <= $testCount; ++$i) {
+            /* @var SolverInterface $solver */
             $solver->solve($i);
         }
     }

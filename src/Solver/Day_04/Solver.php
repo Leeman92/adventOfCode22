@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace App\Solver\Day_04;
 
-use App\Solver\AbstractSolver;
 use App\Services\SectionsService\SectionManager;
+use App\Solver\AbstractSolver;
 use JetBrains\PhpStorm\NoReturn;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  */
 class Solver extends AbstractSolver
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    #[NoReturn] public function partOne(array $input): void
+    #[NoReturn]
+    public function partOne(array $input): void
     {
         $sectionManager = new SectionManager($input);
         $overlapCount = $sectionManager->getCompleteOverlapCount();
@@ -24,10 +25,11 @@ class Solver extends AbstractSolver
         $this->printSolution(1, (string) $overlapCount);
     }
 
-    /**
-     * @inheritDoc
-     */
-    #[NoReturn] public function partTwo(array $input): void
+       /**
+        * {@inheritDoc}
+        */
+       #[NoReturn]
+    public function partTwo(array $input): void
     {
         $sectionManager = new SectionManager($input);
         $overlapCount = $sectionManager->getSingleOverlapCount();

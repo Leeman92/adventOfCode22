@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\RockPaperScissorsService;
 
-use LogicException;
-
 /**
- * Class to solve the Rock Paper Scissor Game depending on the rules given by the puzzle
+ * Class to solve the Rock Paper Scissor Game depending on the rules given by the puzzle.
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
@@ -43,7 +41,7 @@ class RockPaperScissorsService
             'A', 'X' => Rock::class,
             'B', 'Y' => Paper::class,
             'C', 'Z' => Scissors::class,
-            default => throw new LogicException("Wrong type"),
+            default => throw new \LogicException('Wrong type'),
         };
     }
 

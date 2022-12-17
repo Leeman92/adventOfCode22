@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Services\CraneService;
 
 use App\Exception\CrateStackEmptyException;
-use Exception;
 use JetBrains\PhpStorm\NoReturn;
-use TypeError;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  */
 class Crane implements CraneInterface
 {
@@ -20,7 +18,7 @@ class Crane implements CraneInterface
     protected array $crateStacks = [];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function moveCrateStack(int $targetStackIndex, int $sourceStackIndex, int $amount): void
     {
@@ -32,7 +30,7 @@ class Crane implements CraneInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function initiateCrateStacks(array $input): array
     {
@@ -43,11 +41,13 @@ class Crane implements CraneInterface
 
         [$boxSetup, $instructions] = $this->normaliseLines($preparedLines);
         $this->setupBoxes($boxSetup);
+
         return $instructions;
     }
 
     /**
      * @param array<int, array<int, string>> $input
+     *
      * @return array<int, array<int, array<int, string>>>
      */
     protected function normaliseLines(array $input): array
@@ -70,7 +70,7 @@ class Crane implements CraneInterface
                         $addEmptyStacksAtIndices[$lineIndex][$valIndex] = $emptyStacks;
                     }
                 }
-                $input[$lineIndex][$valIndex] = trim($value, "] ");
+                $input[$lineIndex][$valIndex] = trim($value, '] ');
             }
 
             $input[$lineIndex] = array_values($input[$lineIndex]);
@@ -86,7 +86,7 @@ class Crane implements CraneInterface
                 if (empty($boxSetup[$lineIndex][0])) {
                     ++$offset;
                 }
-                for ($i = 0; $i < $amount; $i++) {
+                for ($i = 0; $i < $amount; ++$i) {
                     array_splice($boxSetup[$lineIndex], $index + $offset, 0, '');
                 }
             }
@@ -97,71 +97,71 @@ class Crane implements CraneInterface
 
     /**
      * @param array<int, array<int,string>>|false $boxSetup
-     * @return void
-     * @throws Exception
+     *
+     * @throws \Exception
      */
-    #[NoReturn] protected function setupBoxes(array|false $boxSetup): void
-    {
-        if (!$boxSetup) {
-            throw new Exception("Something went wrong wen parsing the boxSetup");
-        }
+    #[NoReturn]
+ protected function setupBoxes(array|false $boxSetup): void
+ {
+     if (!$boxSetup) {
+         throw new \Exception('Something went wrong wen parsing the boxSetup');
+     }
 
-        $boxSetupString = array_pop($boxSetup)[0];
-        if (!$boxSetupString) {
-            throw new Exception("Something went wrong wen parsing the boxSetup");
-        }
+     $boxSetupString = array_pop($boxSetup)[0];
+     if (!$boxSetupString) {
+         throw new \Exception('Something went wrong wen parsing the boxSetup');
+     }
 
-        foreach ($boxSetup as $stackInstruction) {
-            foreach ($stackInstruction as $stackIndex => $box) {
-                if (empty($box)) {
-                    continue;
-                }
-                $stack = null;
-                if (!array_key_exists($stackIndex + 1, $this->crateStacks)) {
-                    $stack = new CrateStack();
-                    $this->crateStacks[$stackIndex + 1] = $stack;
-                } else {
-                    $stack = $this->crateStacks[$stackIndex + 1];
-                }
-                $stack->addCrates([$box], true);
-            }
-        }
+     foreach ($boxSetup as $stackInstruction) {
+         foreach ($stackInstruction as $stackIndex => $box) {
+             if (empty($box)) {
+                 continue;
+             }
+             $stack = null;
+             if (!array_key_exists($stackIndex + 1, $this->crateStacks)) {
+                 $stack = new CrateStack();
+                 $this->crateStacks[$stackIndex + 1] = $stack;
+             } else {
+                 $stack = $this->crateStacks[$stackIndex + 1];
+             }
+             $stack->addCrates([$box], true);
+         }
+     }
 
-        ksort($this->crateStacks);
-    }
+     ksort($this->crateStacks);
+ }
 
     /**
-     * Parse Instructions and execute them
+     * Parse Instructions and execute them.
      *
      * @param array<int, array<int, string>> $instructions
-     * @param bool $moveIndividually
-     * @return void
-     * @throws Exception
+     *
+     * @throws \Exception
      */
     public function parseInstructions(array $instructions, bool $moveIndividually = false): void
     {
         if (!$instructions) {
-            throw new Exception('Something went wrong wen parsing the craneInstructions');
+            throw new \Exception('Something went wrong wen parsing the craneInstructions');
         }
 
         $instructionPattern = '/move (\d+?) from (\d+?) to (\d+?)/';
         foreach ($instructions as $instruction) {
             $instruction = reset($instruction);
             if (!$instruction) {
-                throw new Exception('Something went wrong parsing the instruction');
+                throw new \Exception('Something went wrong parsing the instruction');
             }
 
             $matches = [];
             preg_match_all($instructionPattern, $instruction, $matches);
-            if (count($matches) !== 4) {
-                throw new Exception('Something went wrong decoding the instruction');
+            if (4 !== count($matches)) {
+                throw new \Exception('Something went wrong decoding the instruction');
             }
             $amount = (int) $matches[1][0];
             $fromStack = (int) $matches[2][0];
             $toStack = (int) $matches[3][0];
 
             if ($moveIndividually) {
-                for ($i = 0; $i < $amount; $i++) {
+                for ($i = 0; $i < $amount; ++$i) {
                     $this->moveCrateStack($toStack, $fromStack, 1);
                 }
             } else {
@@ -171,7 +171,6 @@ class Crane implements CraneInterface
     }
 
     /**
-     * @return string
      * @throws CrateStackEmptyException
      */
     public function getSolution(): string
