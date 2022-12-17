@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Utilities\RockPaperScissors;
+namespace App\Services\RockPaperScissorsService;
 
 use LogicException;
 
@@ -11,7 +11,7 @@ use LogicException;
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
-class RockPaperScissorsMatcher
+class RockPaperScissorsService
 {
     public function evaluate(string $round, bool $secondPart = false): int
     {
@@ -25,13 +25,13 @@ class RockPaperScissorsMatcher
         return $score;
     }
 
-    protected function getMatcher(string $input, string $enemyMove = '', bool $secondPart = false): AbstractMatcher
+    protected function getMatcher(string $input, string $enemyMove = '', bool $secondPart = false): AbstractGameMove
     {
         $className = $this->getMatcherPartOne($input);
         if ($secondPart) {
             $className = $this->getMatcherPartTwo($input, $enemyMove);
         }
-        /** @var AbstractMatcher $abstractMatcher */
+        /** @var AbstractGameMove $abstractMatcher */
         $abstractMatcher = new $className();
 
         return $abstractMatcher;
@@ -57,7 +57,7 @@ class RockPaperScissorsMatcher
         };
     }
 
-    protected function evaluatePartTwoClassName(string $input, AbstractMatcher $matcher): string
+    protected function evaluatePartTwoClassName(string $input, AbstractGameMove $matcher): string
     {
         return match ($input) {
             'X' => $matcher->winsAgainst,

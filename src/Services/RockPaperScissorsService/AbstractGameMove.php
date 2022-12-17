@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Utilities\RockPaperScissors;
+namespace App\Services\RockPaperScissorsService;
 
 use LogicException;
 
@@ -11,7 +11,7 @@ use LogicException;
  *
  * @author Patrick Lehmann <lehmann.s.patrick@gmail.com>
  */
-class AbstractMatcher implements MatcherInterface
+class AbstractGameMove implements GameMoveInterface
 {
     /**
      * Counter to the given Move
@@ -80,7 +80,7 @@ class AbstractMatcher implements MatcherInterface
     /**
      * @inheritDoc
      */
-    public function evaluate(AbstractMatcher $move): int
+    public function evaluate(AbstractGameMove $move): int
     {
         if ($move instanceof $this->winsAgainst) {
             return $this->pointsOnWin;

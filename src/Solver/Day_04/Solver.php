@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Solver\Day_04;
 
 use App\Solver\AbstractSolver;
+use App\Services\SectionsService\SectionManager;
 use JetBrains\PhpStorm\NoReturn;
 
 /**
@@ -17,7 +18,10 @@ class Solver extends AbstractSolver
      */
     #[NoReturn] public function partOne(array $input): void
     {
-        dd($input);
+        $sectionManager = new SectionManager($input);
+        $overlapCount = $sectionManager->getCompleteOverlapCount();
+
+        $this->printSolution($this->day, 1, (string) $overlapCount);
     }
 
     /**
@@ -25,6 +29,9 @@ class Solver extends AbstractSolver
      */
     #[NoReturn] public function partTwo(array $input): void
     {
-        // TODO: Implement partTwo() method.
+        $sectionManager = new SectionManager($input);
+        $overlapCount = $sectionManager->getSingleOverlapCount();
+
+        $this->printSolution($this->day, 2, (string) $overlapCount);
     }
 }

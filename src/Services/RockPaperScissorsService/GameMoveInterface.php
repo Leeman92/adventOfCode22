@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Utilities\RockPaperScissors;
+namespace App\Services\RockPaperScissorsService;
 
 use LogicException;
 
-interface MatcherInterface
+interface GameMoveInterface
 {
     /**
      * Evaluates if the Move gets beaten
@@ -27,10 +27,10 @@ interface MatcherInterface
     /**
      * Scores the current round
      *
-     * @param AbstractMatcher $move
+     * @param AbstractGameMove $move
      * @return int|LogicException
      */
-    public function evaluate(AbstractMatcher $move): int|LogicException;
+    public function evaluate(AbstractGameMove $move): int|LogicException;
 
     /**
      * Returns the score for the given move

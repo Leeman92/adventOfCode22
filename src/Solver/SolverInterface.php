@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Solver;
 
 use App\Exception\InputNotFoundException;
+use Exception;
 use JetBrains\PhpStorm\NoReturn;
 
 interface SolverInterface
@@ -42,6 +43,8 @@ interface SolverInterface
      *
      * @param array<string> $input
      * @return void
+     *
+     * @throws Exception
      */
     public function partOne(array $input): void;
 
@@ -50,6 +53,8 @@ interface SolverInterface
      *
      * @param array<string> $input
      * @return void
+     *
+     * @throws Exception
      */
     public function partTwo(array $input): void;
 }

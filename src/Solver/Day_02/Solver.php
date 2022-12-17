@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Solver\Day_02;
 
 use App\Solver\AbstractSolver;
-use App\Utilities\RockPaperScissors\RockPaperScissorsMatcher;
+use App\Services\RockPaperScissorsService\RockPaperScissorsService;
 use JetBrains\PhpStorm\NoReturn;
 
 /**
@@ -18,7 +18,7 @@ class Solver extends AbstractSolver
      */
     #[NoReturn] public function partOne(array $input): void
     {
-        $rpsMatcher = new RockPaperScissorsMatcher();
+        $rpsMatcher = new RockPaperScissorsService();
         $totalScore = 0;
 
         foreach ($input as $round) {
@@ -33,7 +33,7 @@ class Solver extends AbstractSolver
      */
     #[NoReturn] public function partTwo(array $input): void
     {
-        $rpsMatcher = new RockPaperScissorsMatcher();
+        $rpsMatcher = new RockPaperScissorsService();
         $totalScore = 0;
 
         foreach ($input as $round) {

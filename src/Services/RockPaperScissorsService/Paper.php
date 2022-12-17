@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Utilities\RockPaperScissors;
+namespace App\Services\RockPaperScissorsService;
 
 /**
  * @inheritDoc
  */
-class Paper extends AbstractMatcher
+class Paper extends AbstractGameMove
 {
     /**
      * @inheritDoc
