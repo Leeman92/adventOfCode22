@@ -13,6 +13,7 @@ return $config->setRules([
     'array_syntax' => ['syntax' => 'short'],
     'align_multiline_comment' => ['comment_type' => 'phpdocs_like'],
     'array_indentation' => true,
+    'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
 ])
     ->setFinder($finder)
     ;

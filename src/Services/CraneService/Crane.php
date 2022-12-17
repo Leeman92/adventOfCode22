@@ -153,7 +153,7 @@ class Crane implements CraneInterface
 
             $matches = [];
             preg_match_all($instructionPattern, $instruction, $matches);
-            if (4 !== count($matches)) {
+            if (count($matches) !== 4) {
                 throw new \Exception('Something went wrong decoding the instruction');
             }
             $amount = (int) $matches[1][0];

@@ -52,7 +52,7 @@ class CrateStack
      */
     public function moveCrates(int $amount): array
     {
-        if (0 === count($this->crates)) {
+        if (count($this->crates) === 0) {
             return [];
         }
 

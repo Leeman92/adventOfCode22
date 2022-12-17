@@ -20,7 +20,7 @@ class Solver extends AbstractSolver
     {
         // Check if the last entry is a linebreak if not, add it so it's easier to calculate it as a separate elf
         $lastEntry = end($input);
-        if ('' !== $lastEntry) {
+        if ($lastEntry !== '') {
             $input[] = '';
         }
 
@@ -39,7 +39,7 @@ class Solver extends AbstractSolver
            $elves = [];
            $calories = 0;
            foreach ($input as $carriedCalories) {
-               if ('' === $carriedCalories) {
+               if ($carriedCalories === '') {
                    $elves[] = $calories;
                    $calories = 0;
                    continue;
@@ -67,7 +67,7 @@ class Solver extends AbstractSolver
     {
         // Check if the last entry is a linebreak if not, add it so it's easier to calculate it as a separate elf
         $lastEntry = end($input);
-        if ('' !== $lastEntry) {
+        if ($lastEntry !== '') {
             $input[] = '';
         }
 

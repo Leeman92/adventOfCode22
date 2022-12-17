@@ -22,7 +22,7 @@ class Section
     public function __construct(string $sectionBounds)
     {
         $bounds = explode('-', $sectionBounds);
-        if (2 !== count($bounds)) {
+        if (count($bounds) !== 2) {
             throw new \LogicException(sprintf('There have to be two coordinates defined for a section! %s', $sectionBounds));
         }
 

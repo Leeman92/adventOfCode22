@@ -54,7 +54,7 @@ class Solver extends AbstractSolver
            /** @var array<string> $compartments */
            $compartments = str_split($rucksack, $compartmentLength);
            if (!$compartments ||
-               2 !== count($compartments)) {
+               count($compartments) !== 2) {
                throw new RuntimeException('The input was not formed as expected');
            }
            $compartments[0] = (string) reset($compartments);
@@ -77,7 +77,7 @@ class Solver extends AbstractSolver
 
            foreach ($input as $rucksack) {
                $elfRucksacks[] = mb_str_split($rucksack);
-               if (3 === count($elfRucksacks)) {
+               if (count($elfRucksacks) === 3) {
                    $duplicateItem = array_intersect(...$elfRucksacks);
                    $item = reset($duplicateItem);
                    if (!$item) {

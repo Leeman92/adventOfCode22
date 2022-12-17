@@ -11,7 +11,7 @@ class CraneMoveException extends \Exception
     // Redefine the exception so message isn't optional
     public function __construct(string $message = '', int $code = 0, \Throwable $previous = null)
     {
-        if ('' === $message) {
+        if ($message === '') {
             $message = self::DEFAULT_EXCEPTION_MESSAGE;
         }
         parent::__construct($message, $code, $previous);

@@ -30,10 +30,13 @@ class PuzzleSolver
             throw new SolverNotImplementedException($day);
         }
 
+        /* @var SolverInterface $solver */
         $solver = new $className($day, $testMode);
+        if (!$solver instanceof SolverInterface) {
+            throw new \Exception('The solver for day '.$day.' needs to extend the SolverInterface');
+        }
 
         for ($i = 1; $i <= $testCount; ++$i) {
-            /* @var SolverInterface $solver */
             $solver->solve($i);
         }
     }
